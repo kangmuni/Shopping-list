@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping List</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/be7498019b.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="main.js" defer></script>
+  </head>
+  <body>
+    <!-- Nav Bar -->
+    <nav>
+      <i class="fas fa-shopping-cart"></i>
+      <i class="fas fa-ellipsis-h"></i>
+    </nav>
+    <!-- Add Text -->
+    <section class="addText">
+      <div>쇼핑 목록</div>
+      <input class="addText__input" type="text" value="추가하기" />
+      <button class="addText__btn"><i class="fas fa-plus"></i></button>
+    </section>
+    <!-- Fixed List -->
+    <section class="fixedList">
+      <div class="fixedList__top">
+        <div>고정된 목록</div>
+        <button>
+          <i class="fas fa-chevron-down"></i>
+        </button>
+      </div>
+      <ul>
+        <li>
+          <div class="listAndDate">
+            <div class="list">
+              잡채 재료: 당근, 간장, 설탕, 당면, 양파, 어묵, 시금치
+            </div>
+            <div class="date">2021. 02. 01</div>
+          </div>
+          <i class="fas fa-trash-alt"></i>
+        </li>
+        <span class="banner1">고정을 해제해서 삭제</span>
+        <li>
+          <div class="listAndDate">
+            <div class="list">
+              원두 살 곳: 리이슈, 테일러, 듁스, 앤트러사이트
+            </div>
+            <div class="date">2020. 12. 29</div>
+          </div>
+          <i class="fas fa-trash-alt"></i>
+        </li>
+        <span class="banner2">고정을 해제해서 삭제</span>
+        <li>
+          <div class="listAndDate">
+            <div class="list">매일 냉장고 확인: 베이컨, 식빵, 계란, 스프</div>
+            <div class="date">2019. 01. 08</div>
+          </div>
+          <i class="fas fa-trash-alt"></i>
+        </li>
+        <span class="banner3">고정을 해제해서 삭제</span>
+      </ul>
+    </section>
+    <!-- Added List -->
+    <section class="addedList">
+      <div>추가된 목록</div>
+      <ul></ul>
+    </section>
+    <!-- Footer Bar -->
+    <footer>
+      <div class="footer__text"></div>
+    </footer>
+  </body>
+</html>
