@@ -1,10 +1,21 @@
 * {
+  box-sizing: border-box;
   margin: 0;
 }
 
 body {
-  background-color: rgb(244, 238, 238);
   font-family: "Open Sans", sans-serif;
+}
+
+section {
+  background-color: rgb(244, 238, 238);
+  border-radius: 30px;
+  width: 550px;
+  height: 100vh;
+  margin: auto;
+  box-shadow: 10px 10px 5px 0px rgba(74, 69, 69, 0.75);
+  -webkit-box-shadow: 10px 10px 5px 0px rgba(74, 69, 69, 0.75);
+  -moz-box-shadow: 10px 10px 5px 0px rgba(74, 69, 69, 0.75);
 }
 
 i {
@@ -19,12 +30,12 @@ button {
 }
 
 /* Nav Bar */
-nav {
+header {
   display: flex;
   justify-content: space-between;
   font-size: 50px;
   color: black;
-  margin: 30px;
+  padding: 30px;
 }
 
 /* Add Text */
@@ -34,7 +45,7 @@ nav {
 }
 
 .addText__input {
-  width: 99%;
+  width: 100%;
   height: 40px;
   background-color: rgb(228, 220, 220);
   border: none;
@@ -72,13 +83,23 @@ nav {
   transform: rotate(-90deg);
 }
 
-section {
+article {
   margin: 30px;
+  background-color: rgb(244, 238, 238);
 }
 
 ul {
   list-style: none;
   padding-left: 0;
+}
+
+.fixedList ul {
+  height: 20vh;
+  overflow-y: scroll;
+}
+
+.fixedList ul::-webkit-scrollbar {
+  display: none;
 }
 
 .fixedList ul.hidden {
@@ -94,7 +115,7 @@ ul {
   padding: 10px 30px;
   border-bottom: solid rgb(211, 207, 207) 1px;
   border-radius: 5px;
-  font-size: large;
+  font-size: medium;
   font-weight: 400;
 }
 
@@ -105,15 +126,10 @@ ul {
 }
 
 .fa-trash-alt {
-  margin-left: 10px;
+  visibility: hidden;
   font-size: 20px;
   font-weight: 100;
   color: rgb(136, 133, 133);
-}
-
-.fa-trash-alt:hover {
-  color: rgb(247, 195, 25);
-  transform: scale(1.1);
 }
 
 .fixedList ul li .fa-trash-alt:hover {
@@ -121,39 +137,30 @@ ul {
   transform: scale(1.1);
 }
 
-.fixedList ul .banner1,
-.fixedList ul .banner2,
-.fixedList ul .banner3 {
-  background-color: rgb(248, 57, 43, 0.3);
-  padding: 10px;
-  margin-right: 10px;
-  position: absolute;
-  top: 334px;
-  right: 20px;
-  border-radius: 5px;
+.addedList ul li .fa-trash-alt:hover {
+  color: rgb(247, 195, 25);
+  transform: scale(1.1);
+}
+
+.addedList ul {
+  height: 40vh;
+  overflow-y: scroll;
+}
+
+.addedList ul::-webkit-scrollbar {
   display: none;
 }
 
-.fixedList ul .banner2 {
-  top: 402px;
-}
-
-.fixedList ul .banner3 {
-  top: 471px;
-}
-
-/* Footer Bar */
 footer {
   display: flex;
   align-items: center;
-  position: fixed;
-  left: 0;
+  position: absolute;
   bottom: 0;
-  width: 100%;
+  width: 550px;
   background-color: rgb(249, 246, 246);
-  height: 85px;
-  border-radius: 0 0 30px 30px;
+  height: 8.5vh;
   margin: 0;
+  border-radius: 0 0 30px 30px;
 }
 
 .footer__text {
