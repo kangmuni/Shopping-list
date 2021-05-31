@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Shopping List</title>
+    <title>Notes</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
@@ -17,22 +17,26 @@
     <script src="main.js" defer></script>
   </head>
   <body>
-    <section>
-      <!-- Nav Bar -->
-      <header>
-        <i class="fas fa-shopping-cart"></i>
+    <div class="mode_btn">
+      <i class="fas fa-sun"></i>
+      <i class="fas fa-moon visible"></i>
+    </div>
+    <div class="container">
+      <!-- Header -->
+      <header class="header">
+        <i class="fas fa-pen"></i>
         <i class="fas fa-ellipsis-h"></i>
       </header>
       <!-- Add Text -->
       <article class="addText">
-        <div>쇼핑 목록</div>
+        <div class="addText__title">메모</div>
         <input class="addText__input" type="text" value="추가하기" />
-        <button class="addText__btn"><i class="fas fa-plus"></i></button>
       </article>
+      </section>
       <!-- Fixed List -->
       <article class="fixedList">
         <div class="fixedList__top">
-          <div>고정된 목록</div>
+          <div class="fixedList__title">고정된 메모</div>
           <button>
             <i class="fas fa-chevron-down"></i>
           </button>
@@ -41,39 +45,39 @@
           <li data-key="2">
             <div class="listAndDate">
               <div class="list">
-                잡채 재료: 당근, 간장, 설탕, 당면, 양파, 어묵, 시금치
+                한달에 책 2권 이상 읽기
               </div>
               <div class="date">2021. 02. 01. 2 : 28</div>
             </div>
-            <i class="fas fa-trash-alt" data-id="2"></i>
+            <i class="fas fa-thumbtack" data-id="2"></i>
           </li>
           <li data-key="1">
             <div class="listAndDate">
               <div class="list">
-                원두 살 곳: 리이슈, 테일러, 듁스, 앤트러사이트
+                필수지출 먼저 고려하기 
               </div>
               <div class="date">2020. 12. 29. 17 : 39</div>
             </div>
-            <i class="fas fa-trash-alt" data-id="1"></i>
+            <i class="fas fa-thumbtack" data-id="1"></i>
           </li>
           <li data-key="0">
             <div class="listAndDate">
-              <div class="list">매일 냉장고 확인: 베이컨, 식빵, 계란, 스프</div>
+              <div class="list">존중하고 배려하고 겸손하기</div>
               <div class="date">2019. 01. 08. 7 : 34</div>
             </div>
-            <i class="fas fa-trash-alt" data-id="0"></i>
+            <i class="fas fa-thumbtack" data-id="0"></i>
           </li>
         </ul>
       </article>
       <!-- Added List -->
       <article class="addedList">
-        <div>추가된 목록</div>
+        <div class="addedList__title">추가된 메모</div>
         <ul></ul>
       </article>
       <!-- Footer Bar -->
       <footer>
         <div class="footer__text"></div>
       </footer>
-    </section>
+    </div>
   </body>
 </html>

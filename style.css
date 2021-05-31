@@ -4,23 +4,64 @@
 }
 
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
-section {
+.dark {
+  background-color: rgb(34, 33, 33);
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 5px;
+}
+
+/* container */
+.container {
+  position: relative;
   background-color: rgb(244, 238, 238);
   border-radius: 30px;
-  width: 550px;
-  height: 100vh;
-  margin: auto;
-  box-shadow: 10px 10px 5px 0px rgba(74, 69, 69, 0.75);
-  -webkit-box-shadow: 10px 10px 5px 0px rgba(74, 69, 69, 0.75);
-  -moz-box-shadow: 10px 10px 5px 0px rgba(74, 69, 69, 0.75);
+  width: 465px;
+  height: 93vh;
+  margin: 20px auto;
+  box-shadow: 15px 15px 5px 0px rgba(74, 69, 69, 0.75);
+  -webkit-box-shadow: 15px 15px 5px 0px rgba(74, 69, 69, 0.75);
+  -moz-box-shadow: 15px 15px 5px 0px rgba(74, 69, 69, 0.75);
 }
 
+.container.dark {
+  background-color: rgb(0, 0, 0);
+  box-shadow: 15px 15px 5px 0px rgba(18, 18, 18, 0.75);
+  -webkit-box-shadow: 15px 15px 5px 0px rgba(18, 18, 18, 0.75);
+  -moz-box-shadow: 15px 15px 5px 0px rgba(18, 18, 18, 0.75);
+}
+
+/* mode */
+.mode_btn {
+  width: 50px;
+  height: 30px;
+  position: absolute;
+  top: 15px;
+  right: 30px;
+}
+
+.mode_btn i {
+  font-size: 25px;
+}
+
+.mode_btn .fa-moon {
+  display: flex;
+}
+
+.mode_btn .fa-sun {
+  display: none;
+}
+
+/* header */
 i {
-  color: rgb(247, 195, 25);
-  font-size: 28px;
+  color: rgb(248, 186, 14);
+  font-size: 20px;
   cursor: pointer;
 }
 
@@ -29,19 +70,31 @@ button {
   border: none;
 }
 
-/* Nav Bar */
-header {
+/* Header */
+.header {
   display: flex;
   justify-content: space-between;
-  font-size: 50px;
-  color: black;
-  padding: 30px;
+  padding: 30px 25px 0 25px;
 }
 
 /* Add Text */
 .addText {
   display: flex;
   flex-direction: column;
+  margin-bottom: 30px;
+}
+
+.addText.dark,
+.fixedList.dark,
+.addedList.dark {
+  color: white;
+  background-color: black;
+}
+
+.addText__title {
+  font-size: 25px;
+  font-weight: 700;
+  margin-bottom: 10px;
 }
 
 .addText__input {
@@ -49,24 +102,22 @@ header {
   height: 40px;
   background-color: rgb(228, 220, 220);
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   outline: none;
-  font-size: large;
+  font-size: 15px;
   color: rgb(136, 133, 133);
-  padding-left: 15px;
+  padding: 15px;
 }
 
-.addText__btn {
-  margin-top: 10px;
-  text-align: center;
+.addText__input.dark {
+  background-color: rgb(37, 36, 36);
 }
 
-.addText > div,
-.fixedList > div,
-.addedList > div {
-  font-size: x-large;
+.fixedList__title,
+.addedList__title {
+  font-size: 18px;
   font-weight: 700;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 /* Fixed List, Added List */
@@ -76,6 +127,7 @@ header {
 }
 
 .fixedList__top button {
+  background-color: inherit;
   transition: transform 100ms ease-in-out;
 }
 
@@ -83,18 +135,16 @@ header {
   transform: rotate(-90deg);
 }
 
-article {
-  margin: 30px;
-  background-color: rgb(244, 238, 238);
+.fa-chevron-down.dark {
+  background-color: inherit;
 }
 
-ul {
-  list-style: none;
-  padding-left: 0;
+article {
+  margin: 10px 30px 0 30px;
 }
 
 .fixedList ul {
-  height: 20vh;
+  height: 200px;
   overflow-y: scroll;
 }
 
@@ -112,11 +162,17 @@ ul {
   justify-content: space-between;
   align-items: center;
   background-color: white;
-  padding: 10px 30px;
+  padding: 10px 25px;
+  border-radius: 10px;
   border-bottom: solid rgb(211, 207, 207) 1px;
-  border-radius: 5px;
-  font-size: medium;
+  font-size: 15px;
   font-weight: 400;
+}
+
+.fixedList li.dark,
+.addedList li.dark {
+  background-color: rgb(37, 36, 36);
+  border-bottom: solid rgb(63, 62, 62) 1px;
 }
 
 .fixedList .listAndDate .date,
@@ -125,16 +181,22 @@ ul {
   font-weight: 400;
 }
 
-.fa-trash-alt {
+.fixedList ul li .fa-thumbtack:hover {
+  color: rgb(248, 57, 43);
+  transform: scale(1.1);
+}
+
+.fa-trash-alt,
+.fa-thumbtack {
   visibility: hidden;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 100;
   color: rgb(136, 133, 133);
 }
 
-.fixedList ul li .fa-trash-alt:hover {
-  color: rgb(248, 57, 43);
-  transform: scale(1.1);
+.addedList ul li {
+  display: flex;
+  justify-content: space-between;
 }
 
 .addedList ul li .fa-trash-alt:hover {
@@ -142,8 +204,13 @@ ul {
   transform: scale(1.1);
 }
 
+.addedList ul li .fa-thumbtack:hover {
+  color: rgb(247, 195, 25);
+  transform: scale(1.1);
+}
+
 .addedList ul {
-  height: 40vh;
+  height: 245px;
   overflow-y: scroll;
 }
 
@@ -156,11 +223,18 @@ footer {
   align-items: center;
   position: absolute;
   bottom: 0;
-  width: 550px;
+  width: 465px;
   background-color: rgb(249, 246, 246);
+  opacity: 0.8;
   height: 8.5vh;
   margin: 0;
   border-radius: 0 0 30px 30px;
+  font-size: 13px;
+}
+
+footer.dark {
+  background-color: rgb(46, 45, 45);
+  color: white;
 }
 
 .footer__text {
