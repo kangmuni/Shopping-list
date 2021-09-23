@@ -1,7 +1,9 @@
 const fixedList = document.querySelector('.fixedList');
 const addedList = document.querySelector('.addedList');
+const fixedList_ul = fixedList.querySelector('ul');
 const addedList_ul = addedList.querySelector('ul');
 const input = document.querySelector('input');
+const addForm = document.querySelector('.addForm');
 const footerText = document.querySelector('.footer__text');
 
 const body = document.querySelector('body');
@@ -11,10 +13,10 @@ const moonBtn = document.querySelector('.fa-moon');
 const addText = document.querySelector('.addText');
 const chevron = document.querySelector('.fa-chevron-down');
 const fixedList_li = fixedList.querySelectorAll('li');
-const addedList_li = addedList.querySelectorAll('li');
+const addedList_li = addedList.getElementsByTagName('li');
 const footer = document.querySelector('footer');
-
 const addedList_changeDark = addedList.getElementsByTagName('li');
+const fixedList_changeDark = fixedList.getElementsByTagName('li');
 let bodyMode = document.getElementsByTagName('body')[0];
 
 moonBtn.addEventListener('click', () => {
@@ -28,10 +30,10 @@ moonBtn.addEventListener('click', () => {
   input.classList.toggle('dark');
   chevron.classList.toggle('dark');
   footer.classList.toggle('dark');
-  fixedList_li.forEach((li) => {
+  Array.from(addedList_changeDark).forEach((li) => {
     li.classList.toggle('dark');
   });
-  Array.from(addedList_changeDark).forEach((li) => {
+  Array.from(fixedList_changeDark).forEach((li) => {
     li.classList.toggle('dark');
   });
 });
@@ -47,16 +49,15 @@ sunBtn.addEventListener('click', () => {
   input.classList.toggle('dark');
   chevron.classList.toggle('dark');
   footer.classList.toggle('dark');
-
-  fixedList_li.forEach((li) => {
+  Array.from(addedList_changeDark).forEach((li) => {
     li.classList.toggle('dark');
   });
-  Array.from(addedList_changeDark).forEach((li) => {
+  Array.from(fixedList_changeDark).forEach((li) => {
     li.classList.toggle('dark');
   });
 });
 
-let count = 3;
+let count = 0;
 footerText.innerText = `${count}개의 메모`;
 
 input.addEventListener('click', () => {
@@ -67,7 +68,7 @@ input.addEventListener('click', () => {
 
 function onAdd() {
   const text = input.value;
-  if (text === '' || text === '추가하기') {
+  if (text === '') {
     input.focus();
     return;
   } else {
@@ -93,8 +94,8 @@ function createItem(text) {
   liElement.setAttribute('data-key', id);
   bodyMode.className === 'dark' ? liElement.classList.add('dark') : '';
   liElement.innerHTML = `
-    <div class="listAndDate">
-      <div class="list">${text}</div>
+    <div class="textAndDate">
+      <div class="text">${text}</div>
       <div class="date">${year}. ${
     month + 1
   }. ${date}. ${hours} : ${minutes}</div> 
@@ -112,28 +113,82 @@ function createItem(text) {
     icons.forEach((icon) => {
       icon.style.visibility = 'visible';
     });
-    liElement.addEventListener('mouseleave', (event) => {
-      const key = event.target.dataset.key;
-      const icons = addedList.querySelectorAll(
-        `.addedList li i[data-id="${key}"]`
-      );
-      icons.forEach((icon) => {
-        icon.style.visibility = 'hidden';
-      });
+  });
+  liElement.addEventListener('mouseleave', (event) => {
+    const key = event.target.dataset.key;
+    const icons = addedList.querySelectorAll(
+      `.addedList li i[data-id="${key}"]`
+    );
+    icons.forEach((icon) => {
+      icon.style.visibility = 'hidden';
+    });
+  });
+
+  liElement.addEventListener('mouseenter', (event) => {
+    const key = event.target.dataset.key;
+    const icons = fixedList.querySelectorAll(
+      `.fixedList li i[data-id="${key}"]`
+    );
+    icons.forEach((icon) => {
+      icon.style.visibility = 'visible';
+    });
+  });
+  liElement.addEventListener('mouseleave', (event) => {
+    const key = event.target.dataset.key;
+    const icons = fixedList.querySelectorAll(
+      `.fixedList li i[data-id="${key}"]`
+    );
+    icons.forEach((icon) => {
+      icon.style.visibility = 'hidden';
     });
   });
   id++;
   return liElement;
 }
 
-input.addEventListener('keypress', (event) => {
-  if (event.keyCode === 13) {
-    onAdd();
+addedList_ul.addEventListener('click', (event) => {
+  const id = event.target.dataset.id;
+  const isDelete = event.target.classList.contains('fa-trash-alt');
+  const isPick = event.target.classList.contains('fa-thumbtack');
+  const list = document.querySelector(`.addedList li[data-key="${id}"]`);
+  const trash = document.querySelector(`.icons .fa-trash-alt[data-id='${id}']`);
+  if (isDelete) {
+    list.remove();
+    footerText.textContent = `${(count = count - 1)}개의 메모`;
+  } else if (isPick) {
+    trash.style.display = 'none';
+    fixedList_ul.prepend(list);
   }
 });
 
+fixedList_ul.addEventListener('click', (event) => {
+  const id = event.target.dataset.id;
+  const pin = event.target.classList.contains('fa-thumbtack');
+  const trash = document.querySelector(`.icons .fa-trash-alt[data-id='${id}']`);
+  const list = document.querySelector(`.addedList li[data-key="${id - 1}"]`);
+  const returnLi = document.querySelector(`.fixedList li[data-key="${id}"]`);
+
+  // if (pin) {
+  //   if (addedList_li.length === 0) {
+  //     addedList_ul.prepend(returnLi);
+  //   }
+  //   if (list === null) {
+  //     console.log(addedList_li[0].dataset.key);
+  //     median(Array.from(addedList_li));
+  //   }
+  //   if (list !== null) {
+  //     addedList_ul.insertBefore(returnLi, list);
+  //     trash.style.display = 'inline';
+  //   }
+  // }
+});
+
+addForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  onAdd();
+});
+
 let toggling = 1;
-const fixedList_ul = document.querySelector('.fixedList ul');
 const moreBtn = document.querySelector('.fixedList__top button');
 moreBtn.addEventListener('click', () => {
   moreBtn.classList.toggle('clicked');
@@ -144,28 +199,4 @@ moreBtn.addEventListener('click', () => {
     addedList_ul.style.height = '245px';
   }
   toggling++;
-});
-
-addedList_ul.addEventListener('click', (event) => {
-  const id = event.target.dataset.id;
-  if (id) {
-    const toBeDeleted = document.querySelector(
-      `.addedList li[data-key="${id}"]`
-    );
-    toBeDeleted.remove();
-    footerText.textContent = `${(count = count - 1)}개의 메모`;
-  }
-});
-
-fixedList_li.forEach((el) => {
-  el.addEventListener('mouseenter', (event) => {
-    const key = event.target.dataset.key;
-    if (key) {
-      const pin = fixedList.querySelector(`.fixedList li i[data-id="${key}"]`);
-      pin.style.visibility = 'visible';
-      el.addEventListener('mouseleave', () => {
-        pin.style.visibility = 'hidden';
-      });
-    }
-  });
 });

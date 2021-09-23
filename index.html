@@ -29,10 +29,11 @@
       </header>
       <!-- Add Text -->
       <article class="addText">
-        <div class="addText__title">메모</div>
-        <input class="addText__input" type="text" value="추가하기" />
+        <form action="submit" class="addForm">
+          <div class="addText__title">메모</div>
+          <input class="addText__input" type="text" value="추가하기" />
+        </form>
       </article>
-      </section>
       <!-- Fixed List -->
       <article class="fixedList">
         <div class="fixedList__top">
@@ -41,33 +42,7 @@
             <i class="fas fa-chevron-down"></i>
           </button>
         </div>
-        <ul>
-          <li data-key="2">
-            <div class="listAndDate">
-              <div class="list">
-                한달에 책 2권 이상 읽기
-              </div>
-              <div class="date">2021. 02. 01. 2 : 28</div>
-            </div>
-            <i class="fas fa-thumbtack" data-id="2"></i>
-          </li>
-          <li data-key="1">
-            <div class="listAndDate">
-              <div class="list">
-                필수지출 먼저 고려하기 
-              </div>
-              <div class="date">2020. 12. 29. 17 : 39</div>
-            </div>
-            <i class="fas fa-thumbtack" data-id="1"></i>
-          </li>
-          <li data-key="0">
-            <div class="listAndDate">
-              <div class="list">존중하고 배려하고 겸손하기</div>
-              <div class="date">2019. 01. 08. 7 : 34</div>
-            </div>
-            <i class="fas fa-thumbtack" data-id="0"></i>
-          </li>
-        </ul>
+        <ul></ul>
       </article>
       <!-- Added List -->
       <article class="addedList">

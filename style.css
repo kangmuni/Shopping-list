@@ -144,7 +144,7 @@ article {
 }
 
 .fixedList ul {
-  height: 200px;
+  height: 183px;
   overflow-y: scroll;
 }
 
@@ -192,6 +192,10 @@ article {
   font-size: 18px;
   font-weight: 100;
   color: rgb(136, 133, 133);
+}
+
+.addedList {
+  margin-top: 32px;
 }
 
 .addedList ul li {
