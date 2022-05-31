@@ -7,14 +7,30 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
-.dark {
-  background-color: rgb(34, 33, 33);
-}
-
 ul {
   list-style: none;
   padding-left: 0;
   margin: 5px;
+}
+
+i {
+  color: rgb(248, 186, 14);
+  font-size: 20px;
+  cursor: pointer;
+}
+
+button {
+  outline: none;
+  border: none;
+}
+
+article {
+  margin: 10px 30px 0 30px;
+}
+
+/* body */
+.dark {
+  background-color: rgb(34, 33, 33);
 }
 
 /* container */
@@ -56,18 +72,6 @@ ul {
 
 .mode_btn .fa-sun {
   display: none;
-}
-
-/* header */
-i {
-  color: rgb(248, 186, 14);
-  font-size: 20px;
-  cursor: pointer;
-}
-
-button {
-  outline: none;
-  border: none;
 }
 
 /* Header */
@@ -137,10 +141,6 @@ button {
 
 .fa-chevron-down.dark {
   background-color: inherit;
-}
-
-article {
-  margin: 10px 30px 0 30px;
 }
 
 .fixedList ul {

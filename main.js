@@ -19,6 +19,7 @@ const addedList_changeDark = addedList.getElementsByTagName('li');
 const fixedList_changeDark = fixedList.getElementsByTagName('li');
 let bodyMode = document.getElementsByTagName('body')[0];
 
+// 다크 모드 만들기
 moonBtn.addEventListener('click', () => {
   moonBtn.style.display = 'none';
   sunBtn.style.display = 'flex';
@@ -38,6 +39,7 @@ moonBtn.addEventListener('click', () => {
   });
 });
 
+// 라이트 모드 만들기
 sunBtn.addEventListener('click', () => {
   moonBtn.style.display = 'flex';
   sunBtn.style.display = 'none';
@@ -82,6 +84,7 @@ function onAdd() {
 }
 
 let id = 0;
+// 부모에 붙일 item 만들기
 function createItem(text) {
   const today = new Date();
   const year = today.getFullYear();
@@ -89,16 +92,13 @@ function createItem(text) {
   const date = today.getDate();
   const hours = today.getHours();
   const minutes = today.getMinutes();
-
   const liElement = document.createElement('li');
   liElement.setAttribute('data-key', id);
   bodyMode.className === 'dark' ? liElement.classList.add('dark') : '';
   liElement.innerHTML = `
     <div class="textAndDate">
       <div class="text">${text}</div>
-      <div class="date">${year}. ${
-    month + 1
-  }. ${date}. ${hours} : ${minutes}</div> 
+      <div class="date">${year}. ${month + 1}. ${date}</div> 
     </div>
     <div class="icons">
       <i class="fas fa-thumbtack" data-id=${id}></i>
@@ -146,6 +146,7 @@ function createItem(text) {
   return liElement;
 }
 
+// 추가된 메모, 고정된 메모로 추가하기
 addedList_ul.addEventListener('click', (event) => {
   const id = event.target.dataset.id;
   const isDelete = event.target.classList.contains('fa-trash-alt');
@@ -161,33 +162,21 @@ addedList_ul.addEventListener('click', (event) => {
   }
 });
 
+// 고정된 메모 원래 자리로 돌려 놓기
 fixedList_ul.addEventListener('click', (event) => {
   const id = event.target.dataset.id;
   const pin = event.target.classList.contains('fa-thumbtack');
+  const list = document.querySelector(`.fixedList li[data-key="${id}"]`);
   const trash = document.querySelector(`.icons .fa-trash-alt[data-id='${id}']`);
-  const list = document.querySelector(`.addedList li[data-key="${id - 1}"]`);
-  const returnLi = document.querySelector(`.fixedList li[data-key="${id}"]`);
-
-  // if (pin) {
-  //   if (addedList_li.length === 0) {
-  //     addedList_ul.prepend(returnLi);
-  //   }
-  //   if (list === null) {
-  //     console.log(addedList_li[0].dataset.key);
-  //     median(Array.from(addedList_li));
-  //   }
-  //   if (list !== null) {
-  //     addedList_ul.insertBefore(returnLi, list);
-  //     trash.style.display = 'inline';
-  //   }
-  // }
+  if (undefined) {
+    return;
+  } else if (pin) {
+    addedList_ul.prepend(list);
+    trash.style.display = 'inline';
+  }
 });
 
-addForm.addEventListener('submit', (event) => {
-  event.preventDefault();
-  onAdd();
-});
-
+// 토글링으로 추가된 메모의 높이 조절
 let toggling = 1;
 const moreBtn = document.querySelector('.fixedList__top button');
 moreBtn.addEventListener('click', () => {
@@ -199,4 +188,10 @@ moreBtn.addEventListener('click', () => {
     addedList_ul.style.height = '245px';
   }
   toggling++;
+});
+
+// form에 입력 값 넣기 시도
+addForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  onAdd();
 });
