@@ -16,9 +16,11 @@
 3. 총 메모 개수 하단에 표시
 4. 고정 된 메모 접고 열기 가능
 5. 두가지 모드
-> Light Mode
-> 
-![image](https://user-images.githubusercontent.com/68316994/173484175-64afee8a-5cad-4606-a321-8e51cdc0c40d.png)
-> Dark Mode
-> 
-![image](https://user-images.githubusercontent.com/68316994/173484611-2589cb33-f034-4afd-aa89-c029edafe806.png)
+
+|Light Mode|
+|--|
+|![image](https://user-images.githubusercontent.com/68316994/173484175-64afee8a-5cad-4606-a321-8e51cdc0c40d.png)|
+
+|Dark Mode|
+|--|
+|![image](https://user-images.githubusercontent.com/68316994/173484611-2589cb33-f034-4afd-aa89-c029edafe806.png)|
